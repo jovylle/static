@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random High-Resolution Images</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            overflow: hidden;
+        }
+        .container {
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        .image-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border: 5px solid #3498db;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        .button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            background-color: #3498db;
+        }
+        .button:hover {
+            background-color: #2980b9;
+        }
+        footer {
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📸 Random High-Resolution Images 📸</h1>
+        <p>Click the button to see a random high-resolution image!</p>
+        
+        <div class="image-container">
+            <img id="random-image" src="" alt="Random High-Resolution Image">
+        </div>
+        <div>
+            <button class="btn button" id="show-image-button">Show Random Image</button>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Random High-Resolution Image Page. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            function getRandomImage() {
+                const width = 800;
+                const height = 600;
+                const seed = Math.floor(Math.random() * 1000); // Random seed for unique images
+                return `https://picsum.photos/seed/${seed}/${width}/${height}`;
+            }
+
+            $('#show-image-button').click(function() {
+                $('#random-image').attr('src', getRandomImage());
+            });
+
+            // Optionally display a random image on page load
+            $('#random-image').attr('src', getRandomImage());
+        });
+    </script>
+</body>
+</html>
